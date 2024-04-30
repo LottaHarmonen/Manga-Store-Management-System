@@ -1,0 +1,288 @@
+﻿<UserControl
+    x:Class="BookStoreUI.BookManagerView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:BookStoreUI"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Background="#F0F0F0"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+
+        <Style x:Key="RoundedTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border
+                            Background="White"
+                            BorderBrush="DarkGray"
+                            BorderThickness="1"
+                            CornerRadius="5">
+                            <ScrollViewer x:Name="PART_ContentHost" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition />
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+
+        </Grid.ColumnDefinitions>
+
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <!--<Label Grid.Row="0" Grid.Column="0" Content="ISBN"></Label>-->
+            <Label
+                Grid.Row="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="ISBN" />
+            <Label
+                Grid.Row="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="Title" />
+            <Label
+                Grid.Row="3"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="Language" />
+            <Label
+                Grid.Row="4"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="Author" />
+            <Label
+                Grid.Row="5"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="Author 2" />
+
+            <Label
+                Grid.Row="6"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="Illustrator" />
+            <Label
+                Grid.Row="7"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="Illustrator 2" />
+
+            <Label
+                Grid.Row="8"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="Series" />
+            <Label
+                Grid.Row="9"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="Publication Date" />
+
+
+            <!--<ComboBox Grid.Row="0" Grid.Column="1"></ComboBox>-->
+
+            <TextBox
+                Name="BoxISBN"
+                Grid.Row="1"
+                Grid.Column="1"
+                Height="30"
+                Style="{StaticResource RoundedTextBoxStyle}" />
+            <TextBox
+                Name="BoxTitle"
+                Grid.Row="2"
+                Grid.Column="1"
+                Height="30"
+                Style="{StaticResource RoundedTextBoxStyle}" />
+            <ComboBox
+                Name="BoxLanguage"
+                Grid.Row="3"
+                Grid.Column="1"
+                Height="30">
+                <ComboBoxItem Content="Swedish" />
+                <ComboBoxItem Content="English" />
+                <ComboBoxItem Content="Japanese" />
+                <ComboBoxItem Content="German" />
+            </ComboBox>
+            <ComboBox
+                Name="BoxAuthor"
+                Grid.Row="4"
+                Grid.Column="1"
+                Height="30"
+                DisplayMemberPath="Firstname" 
+                
+                >
+            </ComboBox>
+
+
+            <ComboBox
+                Name="BoxAuthor2"
+                Grid.Row="5"
+                Grid.Column="1"
+                Height="30"
+                DisplayMemberPath="Firstname"
+                
+                />
+
+            <ComboBox
+                Name="BoxIllustrator"
+                Grid.Row="6"
+                Grid.Column="1"
+                Height="30"
+                DisplayMemberPath="Firstname"
+                SelectedValuePath="AuthorId" />
+            <ComboBox
+                Name="BoxIllustrator2"
+                Grid.Row="7"
+                Grid.Column="1"
+                Height="30"
+                DisplayMemberPath="Firstname"
+                SelectedValuePath="AuthorId" />
+
+            <ComboBox
+                Name="BoxSeries"
+                Grid.Row="8"
+                Grid.Column="1"
+                Height="30"
+                DisplayMemberPath="Name" />
+            <DatePicker
+                Name="BoxDate"
+                Grid.Row="9"
+                Grid.Column="1" />
+        </Grid>
+
+
+        <Grid Grid.Row="1" Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label Content="All books" />
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <ListView
+                    Name="AllBooksView"
+                    Height="250"
+                    Margin="10"
+                    Width="300"
+                    DisplayMemberPath="Name"
+                    SelectionChanged="AllBooksView_OnSelectionChanged" />
+
+
+
+                <Grid Grid.Column="1" Grid.Row="1" Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                       
+
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        
+
+                    </Grid>
+                    <Grid Grid.Row="3" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        
+
+                        
+                    </Grid>
+
+
+
+</Grid>
+
+        </Grid>
+
+
+
+
+
+        <Button
+                Name="UpdateBtn"
+                Grid.Row="3"
+                Height="25"
+                Margin="5"
+                Background="#E6F7FF"
+                BorderBrush="Black"
+                BorderThickness="1"
+                Content="Update"
+                Foreground="Black" 
+                Click="UpdateBtn_OnClick"
+                />
+        <Button
+                Name="AddBtn"
+                Grid.Row="4"
+                Height="25"
+                Margin="5"
+                Background="#E6F7FF"
+                BorderBrush="Black"
+                BorderThickness="1"
+                Click="AddBtn_OnClick"
+                Content="Add new"
+                Foreground="Black" />
+
+    </Grid>
+
+
+    
+
+    </Grid>
+</UserControl>
