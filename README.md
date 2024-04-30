@@ -14,4 +14,5 @@ A WPF application for managing a manga bookstore. The application retrieves mang
    - [Download SQL Script](/script.sql) and run the script in your SQL Server Management Studio (SSMS) to create the database.
    - [Download SQL Query](/DataQuery.sql) and run the data script in SSMS to populate the database with sample data. 
 4. Open the WPF application in Visual Studio or your preferred IDE.
-5. Run the application and explore its features.
+5. Find the connectionString section in BookStoreContext.cs and update the Data Source value with the name of your SQL Server instance.
+6. Run the application and explore its features.
